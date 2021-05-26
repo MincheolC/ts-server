@@ -1,4 +1,5 @@
 import express from 'express';
+import path from 'path';
 import mongoose from 'mongoose';
 import { MONGODB_URI } from './util/secrets';
 import logger from './util/logger';
@@ -26,7 +27,8 @@ app.use(express.urlencoded({ extended: true }));
 /**
  * Add Routes
  */
-app.use('/', indexRouter);
+app.use(express.static(path.join(__dirname, 'public')));
+// app.use('/', indexRouter);
 app.use('/users', userRouter);
 app.use('/terms', termRouter);
 app.use('/categories', categoryRouter);
