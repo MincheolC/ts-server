@@ -1,0 +1,24 @@
+{
+  "type": "mysql",
+  "host": "localhost",
+  "port": 3306,
+  "username": "root",
+  "password": null,
+  "database": "chat_app",
+  "synchronize": true,
+  "logging": false,
+  "entities": [
+    "dist/models/rdb/entity/**/*.ts"
+  ],
+  "migrations": [
+    "dist/models/rdb/migration/**/*.ts"
+  ],
+  "subscribers": [
+    "dist/models/rdb/subscriber/**/*.ts"
+  ],
+  "cli": {
+    "entitiesDir": "dist/models/rdb/entity",
+    "migrationsDir": "dist/models/rdb/migration",
+    "subscribersDir": "dist/models/rdb/subscriber"
+  }
+}

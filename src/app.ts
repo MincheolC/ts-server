@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+import { createConnection } from 'typeorm';
 import express from 'express';
 import path from 'path';
 import mongoose from 'mongoose';
@@ -10,14 +12,19 @@ import userRouter from './routes/user';
 import termRouter from './routes/term';
 import categoryRouter from './routes/category';
 
-// Create Express server
-const app = express();
-
 // Connect to MongoDB
 mongoose
   .connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => logger.info('Successfully connected to mongoDB'))
   .catch((e) => logger.error('Failed connected to mongoDB ', e));
+
+// Connect to Mysql
+createConnection()
+  .then(() => logger.info('Successfully connected to mysql'))
+  .catch((e) => logger.error('Failed connected to mysql ', e));
+
+// Create Express server
+const app = express();
 
 // Express configuration
 app.set('port', process.env.PORT || 3000);

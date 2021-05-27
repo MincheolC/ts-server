@@ -8,7 +8,7 @@ interface CSocket extends Socket {
 
 // Chatroom
 let numUsers = 0;
-export function setUpSocket(app: Application): http.Server {
+export function bindSocket(app: Application): http.Server {
   const server = http.createServer(app);
   const io = new Server(server);
 
